@@ -12,7 +12,7 @@ class AppController extends BaseController
      *
      * @var string
      */
-    public $token = "";
+    public $token = '';
 
     /**
      * Payload data decoded from token
@@ -25,10 +25,11 @@ class AppController extends BaseController
      * Initialization hook method.
      *
      * @return void
+     * @throws \Exception
      */
-    public function initialize()
+    public function initialize(): void
     {
-        $authorization = $this->request->getAttribute('authorization');
+        $authorization = $this->getRequest()->getAttribute('authorization');
 
         // set token
         $this->token = $authorization['token'];

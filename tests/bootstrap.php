@@ -125,7 +125,7 @@ Cake\Log\Log::setConfig([
     ]
 ]);
 
-Cake\Core\Plugin::load('Rest', ['path' => ROOT . DS, 'autoload' => true, 'bootstrap' => true]);
+//Cake\Core\Plugin::load('Rest', ['path' => ROOT . DS, 'autoload' => true, 'bootstrap' => true]);
 
 // Ensure default test connection is defined
 if (!getenv('db_dsn')) {

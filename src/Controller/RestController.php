@@ -1,8 +1,7 @@
 <?php
-
 namespace Rest\Controller;
 
-use Cake\Event\Event;
+use Cake\Event\EventInterface;
 
 class RestController extends AppController
 {
@@ -10,15 +9,13 @@ class RestController extends AppController
     /**
      * beforeRender callback
      *
-     * @param Event $event An Event instance
-     * @return null
+     * @param EventInterface $event An Event instance
+     * @return \Cake\Http\Response|null|void
      */
-    public function beforeRender(Event $event)
+    public function beforeRender(EventInterface $event): void
     {
         parent::beforeRender($event);
 
         $this->viewBuilder()->setClassName('Rest.Json');
-
-        return null;
     }
 }

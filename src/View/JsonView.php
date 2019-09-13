@@ -16,36 +16,30 @@ class JsonView extends View
     /**
      * Renders api response
      *
-     * @param string|null $view Name of view file to use
+     * @param string|null $template Name of view file to use
      * @param string|null $layout Layout to use.
      * @return string|null Rendered content or null if content already rendered and returned earlier.
      * @throws Exception If there is an error in the view.
      */
-    public function render($view = null, $layout = null)
+    public function render(?string $template = null, $layout = null): string
     {
-        if ($this->hasRendered) {
-            return null;
-        }
+        $this->setResponse($this->getResponse()->withType('json'));
 
-        $this->response = $this->response->withType('json');
-
-        $this->layout = "Rest.rest";
+        $this->setLayout('Rest.rest');
 
         $content = [
             'status' => 'OK'
         ];
 
-        $code = $this->response->getStatusCode();
+        $code = $this->getResponse()->getStatusCode();
 
-        if ($code != 200) {
-            $content['status'] = "NOK";
+        if ($code !== 200) {
+            $content['status'] = 'NOK';
         }
 
         $content['result'] = $this->viewVars;
 
-        $this->Blocks->set('content', $this->renderLayout(json_encode($content), $this->layout));
-
-        $this->hasRendered = true;
+        $this->Blocks->set('content', $this->renderLayout(json_encode($content), $this->getLayout()));
 
         return $this->Blocks->get('content');
     }

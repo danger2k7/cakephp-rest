@@ -1,0 +1,21 @@
+version: "3.1"
+
+services:
+  app:
+    build:
+      context: ./docker/php-fpm
+      args: # Environment variables available at build-time
+        - USER_ID
+        - GROUP_ID
+    container_name: app
+    working_dir: /var/www/rest
+
+    environment: # Environment variables available at container run-time
+      - https_proxy
+      - http_proxy
+      - no_proxy
+    volumes:
+      - ./:/var/www/rest:cached
+      - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
+      - ${HOME}/.gitconfig:/home/admin/.gitconfig:ro
+      - /etc/sudoers:/etc/sudoers

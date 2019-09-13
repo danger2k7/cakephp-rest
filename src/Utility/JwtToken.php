@@ -23,8 +23,6 @@ class JwtToken
             return false;
         }
 
-        $token = JWT::encode($payload, Configure::read('Rest.jwt.key'), Configure::read('Rest.jwt.algorithm'));
-
-        return $token;
+        return JWT::encode($payload, Configure::read('Rest.jwt.key'), Configure::read('Rest.jwt.algorithm'));
     }
 }

@@ -28,8 +28,6 @@ class RestMiddleware
             Configure::write('useRestErrorHandler', true);
         }
 
-        $response = $next($request, $response);
-
-        return $response;
+        return $next($request, $response);
     }
 }
