@@ -20,7 +20,8 @@ RUN apt-get install -y --no-install-recommends \
     libcurl3-dev \
     libcurl4-openssl-dev \
     libexif-dev \
-    libxml2-dev
+    libxml2-dev \
+    nano
 
 RUN pecl install -o -f xdebug \
     && rm -rf /tmp/pear \
