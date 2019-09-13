@@ -2,6 +2,7 @@
 
 namespace Rest\Test\TestCase\Utility;
 
+use Cake\Core\Configure;
 use Cake\TestSuite\TestCase;
 use Rest\Utility\JwtToken;
 
@@ -11,7 +12,7 @@ class JwtTokenTest extends TestCase
     /**
      * test generate function
      */
-    public function testGenerate()
+    public function testGenerate(): void
     {
         $payload = [
             'id' => 1,

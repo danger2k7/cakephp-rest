@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -12,7 +13,7 @@
  * @since     3.3.0
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
-namespace App;
+namespace TestApp;
 
 use Cake\Core\Configure;
 use Cake\Error\Middleware\ErrorHandlerMiddleware;
@@ -28,13 +29,12 @@ use Cake\Routing\Middleware\RoutingMiddleware;
  */
 class Application extends BaseApplication
 {
-    /**
-     * {@inheritDoc}
-     */
-    public function bootstrap():void
+
+    public function bootstrap(): void
     {
-        // Call parent to load bootstrap from files.
+        // Call the parent to `require_once` config/bootstrap.php
         parent::bootstrap();
+        $this->addPlugin('Rest', ['bootstrap' => true, 'routes' => true]);
     }
 
     /**

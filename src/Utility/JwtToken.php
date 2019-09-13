@@ -22,7 +22,8 @@ class JwtToken
         if (empty($payload)) {
             return false;
         }
-
+debug(Configure::read());
+die;
         return JWT::encode($payload, Configure::read('Rest.jwt.key'), Configure::read('Rest.jwt.algorithm'));
     }
 }

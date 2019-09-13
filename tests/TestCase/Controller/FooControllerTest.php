@@ -2,31 +2,23 @@
 
 namespace Rest\Test\TestCase\Controller;
 
-use Cake\TestSuite\IntegrationTestCase;
+use Cake\TestSuite\IntegrationTestTrait;
+use Cake\TestSuite\TestCase;
 
 /**
  * FooControllerTest Test Case
  */
-class FooControllerTest extends IntegrationTestCase
+class FooControllerTest extends TestCase
 {
-
-    /**
-     * Setup method.
-     *
-     * @return void
-     */
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->useHttpServer(true);
-    }
+    use IntegrationTestTrait;
 
     /**
      * Test method
      *
      * @return void
+     * @throws \Throwable
      */
-    public function testGet()
+    public function testGet(): void
     {
         $this->get('/foo/bar');
         $this->assertResponseOk();
@@ -38,8 +30,9 @@ class FooControllerTest extends IntegrationTestCase
      * Test method
      *
      * @return void
+     * @throws \Throwable
      */
-    public function testGetWithHeaders()
+    public function testGetWithHeaders(): void
     {
         $payload = [
             'id' => 1,

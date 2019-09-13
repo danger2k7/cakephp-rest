@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace TestApp\Controller;
 
+use Cake\Http\Response;
 use Rest\Controller\RestController;
 
 /**

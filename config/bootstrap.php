@@ -2,9 +2,12 @@
 /**
  * Read and inject configuration
  */
+
+use Cake\Core\Configure;
+
 try {
-    Cake\Core\Configure::load('Rest.rest', 'default', false);
-    Cake\Core\Configure::load('rest', 'default', true);
+    \Cake\Core\Configure::load('Rest.rest');
+//    \Cake\Core\Configure::load('rest', 'default', true);
 } catch (\Exception $e) {
-    // do nothing
+    debug($e->getMessage());die;
 }

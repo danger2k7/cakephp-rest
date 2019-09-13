@@ -3,6 +3,7 @@
 namespace Rest;
 
 use Cake\Core\BasePlugin;
+use Cake\Core\PluginApplicationInterface;
 use Cake\Http\MiddlewareQueue;
 use Cake\Routing\Middleware\RoutingMiddleware;
 use Rest\Middleware\AuthorizationMiddleware;
